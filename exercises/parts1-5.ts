@@ -1,6 +1,7 @@
 // URL for the instructions: 
 // https://education.launchcode.org/intro-to-professional-web-dev/chapters/typescript/exercises.html 
 
+import { SpaceLocation } from './SpaceLocation';
 
 // Part 1: Declare (5) Variables With Type
 
@@ -35,9 +36,9 @@ function getDaysToLocation(kilometersAway: number): number {
 // Move your output statement from part 2 here. Update the template literal to call
 // the function and print the outputs for a Mars trip and a moon trip.
 
-console.log(`It will take ${spacecraftName} ${getDaysToLocation(kilometersToMars)} to get to Mars.`)
+// console.log(`It will take ${spacecraftName} ${getDaysToLocation(kilometersToMars)} to get to Mars.`)
 
-console.log(`It will take ${spacecraftName} ${getDaysToLocation(kilometersToMoon)} to get to Mars.`)
+// console.log(`It will take ${spacecraftName} ${getDaysToLocation(kilometersToMoon)} to get to Mars.`)
 
 
 // Part 4: Create a Spacecraft Class
@@ -57,6 +58,9 @@ class Spacecraft {
         let daysToLocation: number = hoursToLocation / 24;
         return daysToLocation;
     }
+    printDaysToLocation(location: SpaceLocation) {
+        console.log(`${this.name} would take ${this.getDaysToLocation(location.kilometersAway)} days to get to ${location.name}.`);
+     }
 }
 
 
@@ -67,13 +71,16 @@ let spaceShuttle = new Spacecraft('Determination', 17500)
 // Move your output statements from part 3 here. Update the template literals use the
 // instance of the class.
 
-console.log(`It will take ${spaceShuttle.name} ${spaceShuttle.getDaysToLocation(kilometersToMars)} to get to Mars.`)
+// console.log(`It will take ${spaceShuttle.name} ${spaceShuttle.getDaysToLocation(kilometersToMars)} to get to Mars.`)
 
-console.log(`It will take ${spaceShuttle.name} ${spaceShuttle.getDaysToLocation(kilometersToMoon)} to get to the Moon.`)
+// console.log(`It will take ${spaceShuttle.name} ${spaceShuttle.getDaysToLocation(kilometersToMoon)} to get to the Moon.`)
 
 
 // Part 5: Export and Import the SpaceLocation Class
 // Add the required import statement BEFORE the part 1 concent.
+
+spaceShuttle.printDaysToLocation(new SpaceLocation('Mars', kilometersToMars));
+spaceShuttle.printDaysToLocation(new SpaceLocation('the Moon', kilometersToMoon));
 
 
 // Add the printDaysToLocation function to the Spacecraft class.
